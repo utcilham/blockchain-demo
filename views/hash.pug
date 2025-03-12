@@ -2,21 +2,33 @@ extends layout
 
 block content
   .container
-
-    h1 SHA256 #{__('Hash')}
-    .well#well1
-      form.form-horizontal
-
-        .form-group
-          label.col-sm-2.control-label(for='data') #{__('Data')}:
-          .col-sm-10
-            textarea#data.form-control(rows='10')
-
-        .form-group
-          label.col-sm-2.control-label(for='hash') #{__('Hash')}:
-          .col-sm-10
-            input#hash.form-control(type='text', disabled)
-
+    .panel.panel-primary.shadow-lg.rounded
+      .panel-heading.text-center.bg-gradient-primary
+        h1.text-white.text-shadow SHA256 #{__('Hash')}
+      .panel-body.bg-light.p-4.rounded.shadow-sm
+        form.form-horizontal
+          .form-group
+            label.col-sm-2.control-label.text-primary.text-bold(for='data') #{__('Data')}:
+            .col-sm-10
+              textarea#data.form-control.shadow-md.rounded(rows='5', placeholder='Enter text to hash...')
+          .form-group
+            label.col-sm-2.control-label.text-primary.text-bold(for='hash') #{__('Hash')}:
+            .col-sm-10
+              input#hash.form-control.shadow-md.rounded(type='text', disabled, placeholder='Generated hash will appear here')
+  
+  style.
+    .bg-gradient-primary {
+      background: linear-gradient(to right, #007bff, #0056b3);
+    }
+    .text-shadow {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    .shadow-md {
+      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    .shadow-lg {
+      box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3);
+    }
   script.
     function getText(block, chain) {
       return $('#data').val();
